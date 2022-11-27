@@ -17,9 +17,11 @@
 		<div class="page">
 			<header class="header">
 				<div class="header__container">
-					<a href="#" class="header__phone">Call - 123 456 789</a>
+					<a href="tel:+123 456789" class="header__phone">Call - 123 456 789</a>
 					<div class="header__logo">
-						<img src="img/header/logo.png" alt="" class="header__logo-img">
+						<a href="#" class="header__logo-link">
+							<img src="img/header/logo.png" alt="" class="header__logo-img">
+						</a>
 					</div>
 					<div class="header__btn btn">Reservation</div>
 				</div>
@@ -31,7 +33,7 @@
 							<h2 class="welcome__title">Welcome to <br> Restaurant</h2>
 							<p class="welcome__text">The people, food and the prime locations make the perfect place <br>
 								good friends & family to come together and have great time.</p>
-							<button class="welcome__btn btn">View Menu</button>
+							<a href="#" class=" welcome__btn btn">View Menu</a>
 						</div>
 						<div class="welcome__picture">
 							<img src="img//welcome/welcome.png" alt="" class="welcome__picture-img">
@@ -488,10 +490,13 @@
 						</div>
 						<div class="blog__items">
 							<div class="blog__item item-blog">
+
 								<div class="item-blog__cover cover-item-blog-pizza">
-									<button class="item-blog__btn btn">View More</button>
-									<div class="item-blog__cover_dark"></div>
+									<div class="item-blog__cover-dark">
+										<a href="#" class="item-blog__btn btn">View More</a>
+									</div>
 								</div>
+
 								<div class="item-blog__text-description">
 									<p class="item-blog__sub-title">
 										<span class="item-blog__label">Delicious</span>
@@ -502,9 +507,12 @@
 										matrix economically and the creative activity to beta test override the food quality.</p>
 								</div>
 							</div>
+
 							<div class="blog__item item-blog item-blog-shrimps">
 								<div class="item-blog__cover">
-									<button class="item-blog__btn btn">View More</button>
+									<div class="item-blog__cover-dark">
+										<a href="#" class="item-blog__btn btn">View More</a>
+									</div>
 								</div>
 								<div class="item-blog__text-description">
 									<p class="item-blog__sub-title">
@@ -521,20 +529,20 @@
 				</section>
 				<section class="reservation">
 					<div class="reservation__container">
-						<div class="rese4rvation__form">
+						<form class="reservation__form">
 							<p class="reservation__sub-title">reservation</p>
 							<h2 class="reservation__title">Book Your Table</h2>
 							<div class="reservation__row">
 								<input type="text" class="reservation__input reservation__input_big" placeholder="Name">
 								<input type="text" class="reservation__input reservation__input_big" placeholder="Email">
 							</div>
-							<div class="reservation__row">
+							<div class="reservation__row reservation__row-last">
 								<input type="text" class="reservation__input reservation__input_small" placeholder="Persons">
 								<input type="text" class="reservation__input reservation__input_small" placeholder="Timing">
 								<input type="text" class="reservation__input reservation__input_small" placeholder="Date">
 							</div>
-							<button class="reservation__btn btn">Book A Table</button>
-						</div>
+							<a href="#" class="reservation__btn btn">Book A Table</a>
+						</form>
 					</div>
 				</section>
 			</main>

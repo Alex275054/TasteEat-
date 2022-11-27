@@ -41,6 +41,34 @@ new Swiper('.testimonial-slider', {
    speed: 800,
    // Бесконечный слайдер
    loop: true,
+   // Responsive breakpoints
+   breakpoints: {
+      // when window width is >= 320px
+      320: {
+         slidesPerView: 1,
+         spaceBetween: 20
+      },
+      // when window width is >= 992px
+      992: {
+         slidesPerView: 2.5,
+         spaceBetween: 30
+      },
+      // when window width is >= 410px
+      767: {
+         slidesPerView: 2,
+         spaceBetween: 30
+      },
+      // // when window width is >= 500px
+      // 500: {
+      //    slidesPerView: 3,
+      //    spaceBetween: 40
+      // },
+      // // when window width is >= 767px
+      // 767: {
+      //    slidesPerView: 4,
+      //    spaceBetween: 40
+      // }
+   },
 });
 new Swiper('.items-offers-slider', {
    // Управление клавиатурой
