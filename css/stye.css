@@ -74,10 +74,6 @@ html {
   background-color: transparent;
   outline: 0;
 }
-.btn:hover {
-  border: 3px solid #927345;
-}
-
 .title {
   font-size: 30px;
   font-family: "Cormorant Infant", serif;
@@ -129,6 +125,12 @@ html {
   color: #fff;
   font-family: "Josefin Sans", sans-serif;
   font-size: 22px;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+.header__phone:hover {
+  color: #968162;
+  border: 1px solid #968162;
 }
 .header__logo {
   padding-right: 15px;
@@ -141,6 +143,7 @@ html {
   transition: all ease 0.3s;
   font-family: "Josefin Sans", sans-serif;
   font-size: 22px;
+  text-decoration: none;
 }
 @media (max-width: 680px) {
   .header__btn {
@@ -186,13 +189,17 @@ html {
 .welcome__text {
   font-family: "Josefin Sans", sans-serif;
   font-size: 20px;
-  margin-bottom: 35px;
+  margin-bottom: 50px;
 }
 .welcome__btn {
   color: #E1B168;
   font-size: 22px;
   font-weight: 600;
   text-decoration: none;
+}
+.welcome__btn:hover {
+  color: #968162;
+  border: 1px solid #968162;
 }
 .about {
   background-color: #FFF8F5;
@@ -345,6 +352,13 @@ html {
   font-size: 22px;
   color: #E1B168;
   font-family: "Josefin Sans", sans-serif;
+  text-decoration: none;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+.description-menu .description-menu__btn:hover {
+  color: #968162;
+  border: 1px solid #968162;
 }
 
 .list-menu__title {
@@ -661,6 +675,13 @@ html {
   font-size: 22px;
   color: #E1B168;
   margin: 0 auto;
+  text-decoration: none;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+.popular__btn:hover {
+  color: #968162;
+  border: 1px solid #968162;
 }
 
 .swiper-container {
@@ -942,6 +963,8 @@ html {
   text-decoration: none;
   color: #000;
   outline: 0;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
 }
 .reservation__btn:hover {
   background-color: rgb(138, 138, 138);
@@ -1057,6 +1080,11 @@ html {
   position: relative;
   top: 4px;
   right: 5px;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+.footer__btn:hover {
+  background-color: rgb(138, 138, 138);
 }
 .footer__time span {
   color: #E1B168;
