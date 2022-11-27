@@ -144,6 +144,8 @@ new Swiper('.popular-items-slider', {
    slidesPerGroup: 1,
    // Скорость
    speed: 800,
+   // Бесконечный слайдер
+   loop: true,
    // Responsive breakpoints
    breakpoints: {
       // when window width is >= 320px
