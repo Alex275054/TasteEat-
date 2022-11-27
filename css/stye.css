@@ -129,8 +129,8 @@ html {
   transition: all ease 0.3s;
 }
 .header__phone:hover {
-  color: #968162;
-  border: 1px solid #968162;
+  color: #fff;
+  background-color: #E1B168;
 }
 .header__logo {
   padding-right: 15px;
@@ -196,10 +196,13 @@ html {
   font-size: 22px;
   font-weight: 600;
   text-decoration: none;
+  -webkit-transition: all ease 0.3s;
+  transition: all ease 0.3s;
 }
 .welcome__btn:hover {
-  color: #968162;
-  border: 1px solid #968162;
+  color: #fff;
+  background-color: #E1B168;
+  border-radius: 5px;
 }
 .about {
   background-color: #FFF8F5;
@@ -357,8 +360,8 @@ html {
   transition: all ease 0.3s;
 }
 .description-menu .description-menu__btn:hover {
-  color: #968162;
-  border: 1px solid #968162;
+  color: #fff;
+  background-color: #E1B168;
 }
 
 .list-menu__title {
@@ -680,10 +683,13 @@ html {
   transition: all ease 0.3s;
 }
 .popular__btn:hover {
-  color: #968162;
-  border: 1px solid #968162;
+  color: #fff;
+  background-color: #E1B168;
 }
 
+.popular-items-slider {
+  overflow: hidden;
+}
 .swiper-container {
   margin-bottom: 55px;
 }
@@ -862,23 +868,6 @@ html {
 }
 .item-blog__text {
   font-size: 20px;
-}
-.item-blog__cover-dark {
-  height: 384px;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 640px;
-          flex: 0 1 640px;
-  background-color: #000;
-  opacity: 0.5;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
 }
 
 .cover-item-blog-pizza {
