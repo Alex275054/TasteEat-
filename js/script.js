@@ -70,7 +70,15 @@ new Swiper('.testimonial-slider', {
       // }
    },
 });
-new Swiper('.items-offers-slider', {
+new Swiper('.offers-slider', {
+   // Навигация 
+   // Буллеты, текущее положение, прогрессбар
+   pagination: {
+      el: '.swiper-pagination',
+      // Буллеты
+      type: 'bullets',
+      clickable: true,
+   },
    // Управление клавиатурой
    keyboard: {
       // Включить\выключить
@@ -84,12 +92,20 @@ new Swiper('.items-offers-slider', {
       // pageUp, pageDown
       pageUpDown: true,
    },
+   // Управление колесом мыши
+   mousewheel: {
+      // Чувствительность колеса мыши
+      sensitivity: 1,
+      // Класс объекта на котором
+      // будет срабатывать прокрутка мышью.
+      //eventsTarget: ".testimonial-slider"
+   },
    // Автовысота
-   autoHeight: true,
+   autoHeight: false,
    // Количество слайдов для показа
    slidesPerView: 2,
    // Отступ между слайдами
-   // spaceBetween: 30,
+   spaceBetween: 30,
    // Количество пролистываемых слайдов
    slidesPerGroup: 1,
    // Скорость
@@ -103,21 +119,11 @@ new Swiper('.items-offers-slider', {
          slidesPerView: 1,
          spaceBetween: 20
       },
-      // when window width is >= 410px
-      767: {
+      // when window width is >= 992px
+      992: {
          slidesPerView: 2,
          spaceBetween: 30
       },
-      // // when window width is >= 500px
-      // 500: {
-      //    slidesPerView: 3,
-      //    spaceBetween: 40
-      // },
-      // // when window width is >= 767px
-      // 767: {
-      //    slidesPerView: 4,
-      //    spaceBetween: 40
-      // }
    },
 });
 new Swiper('.popular-items-slider', {

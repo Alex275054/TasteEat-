@@ -129,8 +129,8 @@ html {
   transition: all ease 0.3s;
 }
 .header__phone:hover {
-  color: #fff;
-  background-color: #E1B168;
+  color: #968162;
+  border: 1px solid #968162;
 }
 .header__logo {
   padding-right: 15px;
@@ -196,13 +196,10 @@ html {
   font-size: 22px;
   font-weight: 600;
   text-decoration: none;
-  -webkit-transition: all ease 0.3s;
-  transition: all ease 0.3s;
 }
 .welcome__btn:hover {
-  color: #fff;
-  background-color: #E1B168;
-  border-radius: 5px;
+  color: #968162;
+  border: 1px solid #968162;
 }
 .about {
   background-color: #FFF8F5;
@@ -360,8 +357,8 @@ html {
   transition: all ease 0.3s;
 }
 .description-menu .description-menu__btn:hover {
-  color: #fff;
-  background-color: #E1B168;
+  color: #968162;
+  border: 1px solid #968162;
 }
 
 .list-menu__title {
@@ -408,6 +405,7 @@ html {
   font-family: "Cormorant Infant", serif;
   text-transform: capitalize;
   margin-bottom: 15px;
+  line-height: 1.2;
 }
 .testimonial__text {
   font-size: 15px;
@@ -459,15 +457,6 @@ html {
   max-width: 400px;
 }
 
-/* Стрелки */
-.testimonial-slider .swiper-button-prev::after,
-.testimonial-slider .swiper-button-next::after {
-  color: #fff;
-  font-size: 100px;
-  display: none;
-  position: relative;
-}
-
 .testimonial-slider .swiper-button-prev {
   left: 25px;
 }
@@ -487,36 +476,9 @@ html {
   background-color: #fff;
 }
 
-/* Фракция */
-.testimonial-slider .swiper-pagination-fraction {
-  font-size: 20px;
-  color: #fff;
-}
-
-/* Прогрессбар */
-.testimonial-slider .swiper-pagination-progressbar-fill {
-  background-color: #7a956b;
-}
-
-/* Скролл */
-.testimonial-slider .swiper-scrollbar-drag {
-  cursor: pointer;
-  background-color: #7a956b;
-}
-
-/* Автоширина */
-.testimonial-slider .swiper-slide {
-  /* width: auto; */
-}
-
 /* Мультирядность  */
 .testimonial-slider {
   height: 100%;
-  overflow: hidden;
-}
-
-.testimonial-slider .swiper-slide {
-  height: calc((100% - 30px) / 2);
   overflow: hidden;
 }
 
@@ -528,9 +490,7 @@ html {
 }
 
 .offers {
-  padding: 145px 0;
-}
-.offers__text {
+  padding: 140px 0;
   text-align: center;
 }
 .offers__sub-title {
@@ -548,110 +508,137 @@ html {
   font-family: "Cormorant Infant", serif;
   text-transform: capitalize;
   margin-bottom: 15px;
+  line-height: 1.2;
 }
-.offers__main-text {
-  font-size: 20px;
-  font-family: "Josefin Sans", sans-serif;
-  margin-bottom: 40px;
-}
-.items-offers {
-  font-family: "Josefin Sans", sans-serif;
-}
-.items-offers__item {
+.offers .offers__text {
+  max-width: 815px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 665px;
-          flex: 0 0 665px;
-  padding: 50px 50px 50px;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  margin: 0 auto;
 }
-.items-offers__item-burger {
-  background: url("../img/offers/1.png") no-repeat;
+.offers__dish {
+  padding: 0 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -moz-text-align-last: left;
+       text-align-last: left;
+  height: 410px;
 }
-.items-offers__text {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 278px;
-          flex: 0 0 278px;
+.offers__dish-burger {
+  background-image: url("../img/offers/1.png");
 }
-.items-offers__sub-price-main {
-  z-index: 2;
+.offers__dish-pizza {
+  background-image: url("../img/offers/2.png");
+}
+.dish-burger-text-offers__price-text {
   position: relative;
-  bottom: 120px;
-  left: 20px;
+  bottom: 10px;
+  padding-left: 25px;
 }
-.items-offers__sub-title {
+.dish-burger-text-offers__price {
+  background-image: url("../img/offers/white.png");
+  background-repeat: no-repeat;
+  width: 157px;
+  height: 95px;
+  margin-bottom: 40px;
+  position: relative;
+  right: 10px;
+  top: 10px;
+}
+.dish-burger-text-offers__price-sub-title {
+  color: #292E36;
   font-size: 15px;
-  margin-bottom: 8px;
+  text-transform: uppercase;
 }
-.items-offers__title {
-  margin-bottom: 10px;
-  font-size: 40px;
-  margin-right: 25px;
+.dish-burger-text-offers__price-main {
+  font-size: 60px;
+  color: #292E36;
   font-family: "Cormorant Infant", serif;
 }
-.items-offers__main-text {
+.dish-burger-text-offers__sub-title {
+  color: #292E36;
+  font-size: 15px;
+  border-top: #292E36 2px solid;
+  border-bottom: #292E36 2px solid;
+  display: inline-block;
+  padding: 8px;
+  margin-bottom: 23px;
+}
+.dish-burger-text-offers__title {
+  color: #292E36;
+  font-size: 40px;
+  font-family: "Cormorant Infant", serif;
+  margin-bottom: 10px;
+}
+.dish-burger-text-offers__text {
+  color: #555555;
   font-size: 20px;
 }
-.items-offers__item-pizza {
-  background: url("../img/offers/2.png") no-repeat;
+
+.dish-burger-img-offers {
+  padding: 88px 0;
 }
 
-.sub-price-items-offers-burger {
-  font-size: 16px;
-  text-transform: uppercase;
+.dish-pizza-text-offers__price-text {
+  position: relative;
+  bottom: 10px;
+  padding-left: 25px;
 }
-.sub-price-items-offers-burger p {
-  font-family: "Cormorant Infant", serif;
-  font-size: 60px;
-}
-
-.sub-price-items-offers-pizza {
-  font-size: 16px;
-  text-transform: uppercase;
-}
-.sub-price-items-offers-pizza p {
-  font-family: "Cormorant Infant", serif;
-  font-size: 60px;
+.dish-pizza-text-offers__price {
+  background-image: url("../img/offers/dark.png");
+  background-repeat: no-repeat;
+  width: 157px;
+  height: 95px;
+  margin-bottom: 40px;
+  position: relative;
+  right: 10px;
+  top: 10px;
   color: #fff;
+}
+.dish-pizza-text-offers__price-sub-title {
+  font-size: 15px;
+  text-transform: uppercase;
+}
+.dish-pizza-text-offers__price-main {
+  font-size: 60px;
+  font-family: "Cormorant Infant", serif;
+}
+.dish-pizza-text-offers__sub-title {
+  color: #292E36;
+  font-size: 15px;
+  border-top: #292E36 2px solid;
+  border-bottom: #292E36 2px solid;
+  display: inline-block;
+  padding: 8px;
+  margin-bottom: 23px;
+}
+.dish-pizza-text-offers__title {
+  color: #292E36;
+  font-size: 40px;
+  font-family: "Cormorant Infant", serif;
+  margin-bottom: 10px;
+}
+.dish-pizza-text-offers__text {
+  color: #555555;
+  font-size: 20px;
+}
+
+.dish-pizza-img-offers {
+  padding: 88px 0;
 }
 
 /* ------------------ */
-.items-offers-slider {
-  overflow: hidden;
+.offers-slider {
   padding: 30px 0 70px 0;
-}
-
-/* Стрелки */
-.items-offers-slider .swiper-button-prev::after,
-.items-offers-slider .swiper-button-next::after {
-  color: #fff;
-  font-size: 100px;
-  display: none;
-  position: relative;
-}
-
-.items-offers-slider .swiper-button-prev {
-  left: 25px;
-}
-
-/* Автоширина */
-.items-offers-slider .swiper-slide {
-  /* width: auto; */
-}
-
-/* Мультирядность  */
-.items-offers-slider {
-  height: 100%;
-}
-
-.items-offers-slider .swiper-slide {
   overflow: hidden;
 }
 
+/* ------------------ */
 .popular {
   font-family: "Josefin Sans", sans-serif;
 }
@@ -673,6 +660,7 @@ html {
   font-family: "Cormorant Infant", serif;
   text-transform: capitalize;
   margin-bottom: 15px;
+  line-height: 1.2;
 }
 .popular__btn {
   font-size: 22px;
@@ -683,8 +671,8 @@ html {
   transition: all ease 0.3s;
 }
 .popular__btn:hover {
-  color: #fff;
-  background-color: #E1B168;
+  color: #968162;
+  border: 1px solid #968162;
 }
 
 .popular-items-slider {
@@ -709,6 +697,13 @@ html {
   margin-bottom: 140px;
 }
 
+/* ------------------ */
+.popular-slider {
+  padding: 30px 0 70px 0;
+  overflow: hidden;
+}
+
+/* ------------------ */
 .suggestions {
   background-color: #292E36;
   color: #fff;
@@ -760,6 +755,9 @@ html {
   .items-suggestions {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
   }
 }
 .items-suggestions__item {
@@ -770,8 +768,6 @@ html {
   height: 225px;
   text-align: center;
   padding: 45px 0 0 0;
-}
-.items-suggestions__item:not(:last-child) {
   margin: 0 20px 20px 0;
 }
 .items-suggestions__title {
@@ -869,10 +865,22 @@ html {
 .item-blog__text {
   font-size: 20px;
 }
-
-.cover-item-blog-pizza {
-  background: url("../img/blog/01.png");
-  background-repeat: no-repeat;
+.item-blog__cover-dark {
+  height: 384px;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 640px;
+          flex: 0 1 640px;
+  background-color: #000;
+  opacity: 0.5;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .item-blog__btn {
@@ -884,13 +892,14 @@ html {
   background-color: #dcb67d;
 }
 
-.item-blog-shrimps {
-  background: url("../img/blog/02.png");
+.cover-item-blog-pizza {
+  background: url("../img/blog/01.png");
   background-repeat: no-repeat;
 }
 
 .reservation {
   background-image: url("../img/reservation/reservation-bg.png");
+  background-size: contain;
   padding: 140px 0;
   color: #fff;
   text-align: center;
@@ -923,7 +932,14 @@ html {
   padding: 17px 0 23px 17px;
   outline: none;
   margin-bottom: 30px;
-  max-width: 307px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+@media (max-width: 500px) {
+  .reservation__input {
+    padding: 17px 0 23px 5px;
+  }
 }
 .reservation__input_big {
   -webkit-box-flex: 0;
@@ -954,6 +970,13 @@ html {
   outline: 0;
   -webkit-transition: all ease 0.3s;
   transition: all ease 0.3s;
+  line-height: 1.2;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 242px;
+          flex: 0 1 242px;
 }
 .reservation__btn:hover {
   background-color: rgb(138, 138, 138);
@@ -963,6 +986,11 @@ html {
   background-color: #292E36;
   padding: 140px;
   opacity: 0.9;
+}
+@media (max-width: 500px) {
+  .reservation__form {
+    padding: 140px 50px;
+  }
 }
 
 .footer {
