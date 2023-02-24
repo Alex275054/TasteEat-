@@ -1,5 +1,6 @@
 (() => {
     "use strict";
+    const modules_flsModules = {};
     function isWebp() {
         function testWebP(callback) {
             let webP = new Image;
@@ -12,6 +13,9 @@
             let className = true === support ? "webp" : "no-webp";
             document.documentElement.classList.add(className);
         }));
+    }
+    function getHash() {
+        if (location.hash) return location.hash.replace("#", "");
     }
     let bodyLockStatus = true;
     let bodyLockToggle = (delay = 500) => {
@@ -59,6 +63,58 @@
             }
         }));
     }
+    function menuClose() {
+        bodyUnlock();
+        document.documentElement.classList.remove("menu-open");
+    }
+    function functions_FLS(message) {
+        setTimeout((() => {
+            if (window.FLS) console.log(message);
+        }), 0);
+    }
+    function uniqArray(array) {
+        return array.filter((function(item, index, self) {
+            return self.indexOf(item) === index;
+        }));
+    }
+    let gotoblock_gotoBlock = (targetBlock, noHeader = false, speed = 500, offsetTop = 0) => {
+        const targetBlockElement = document.querySelector(targetBlock);
+        if (targetBlockElement) {
+            let headerItem = "";
+            let headerItemHeight = 0;
+            if (noHeader) {
+                headerItem = "header.header";
+                const headerElement = document.querySelector(headerItem);
+                if (!headerElement.classList.contains("_header-scroll")) {
+                    headerElement.style.cssText = `transition-duration: 0s;`;
+                    headerElement.classList.add("_header-scroll");
+                    headerItemHeight = headerElement.offsetHeight;
+                    headerElement.classList.remove("_header-scroll");
+                    setTimeout((() => {
+                        headerElement.style.cssText = ``;
+                    }), 0);
+                } else headerItemHeight = headerElement.offsetHeight;
+            }
+            let options = {
+                speedAsDuration: true,
+                speed,
+                header: headerItem,
+                offset: offsetTop,
+                easing: "easeOutQuad"
+            };
+            document.documentElement.classList.contains("menu-open") ? menuClose() : null;
+            if ("undefined" !== typeof SmoothScroll) (new SmoothScroll).animateScroll(targetBlockElement, "", options); else {
+                let targetBlockElementPosition = targetBlockElement.getBoundingClientRect().top + scrollY;
+                targetBlockElementPosition = headerItemHeight ? targetBlockElementPosition - headerItemHeight : targetBlockElementPosition;
+                targetBlockElementPosition = offsetTop ? targetBlockElementPosition - offsetTop : targetBlockElementPosition;
+                window.scrollTo({
+                    top: targetBlockElementPosition,
+                    behavior: "smooth"
+                });
+            }
+            functions_FLS(`[gotoBlock]: Юхуу...їдемо до ${targetBlock}`);
+        } else functions_FLS(`[gotoBlock]: Йой... Такого блоку немає на сторінці: ${targetBlock}`);
+    };
     function ssr_window_esm_isObject(obj) {
         return null !== obj && "object" === typeof obj && "constructor" in obj && obj.constructor === Object;
     }
@@ -2624,34 +2680,396 @@
     }));
     core_Swiper.use([ Resize, Observer ]);
     const core = core_Swiper;
+    function create_element_if_not_defined_createElementIfNotDefined(swiper, originalParams, params, checkProps) {
+        if (swiper.params.createElements) Object.keys(checkProps).forEach((key => {
+            if (!params[key] && true === params.auto) {
+                let element = utils_elementChildren(swiper.el, `.${checkProps[key]}`)[0];
+                if (!element) {
+                    element = utils_createElement("div", checkProps[key]);
+                    element.className = checkProps[key];
+                    swiper.el.append(element);
+                }
+                params[key] = element;
+                originalParams[key] = element;
+            }
+        }));
+        return params;
+    }
+    function Navigation({swiper, extendParams, on, emit}) {
+        extendParams({
+            navigation: {
+                nextEl: null,
+                prevEl: null,
+                hideOnClick: false,
+                disabledClass: "swiper-button-disabled",
+                hiddenClass: "swiper-button-hidden",
+                lockClass: "swiper-button-lock",
+                navigationDisabledClass: "swiper-navigation-disabled"
+            }
+        });
+        swiper.navigation = {
+            nextEl: null,
+            prevEl: null
+        };
+        const makeElementsArray = el => {
+            if (!Array.isArray(el)) el = [ el ].filter((e => !!e));
+            return el;
+        };
+        function getEl(el) {
+            let res;
+            if (el && "string" === typeof el && swiper.isElement) {
+                res = swiper.el.shadowRoot.querySelector(el);
+                if (res) return res;
+            }
+            if (el) {
+                if ("string" === typeof el) res = [ ...document.querySelectorAll(el) ];
+                if (swiper.params.uniqueNavElements && "string" === typeof el && res.length > 1 && 1 === swiper.el.querySelectorAll(el).length) res = swiper.el.querySelector(el);
+            }
+            if (el && !res) return el;
+            return res;
+        }
+        function toggleEl(el, disabled) {
+            const params = swiper.params.navigation;
+            el = makeElementsArray(el);
+            el.forEach((subEl => {
+                if (subEl) {
+                    subEl.classList[disabled ? "add" : "remove"](...params.disabledClass.split(" "));
+                    if ("BUTTON" === subEl.tagName) subEl.disabled = disabled;
+                    if (swiper.params.watchOverflow && swiper.enabled) subEl.classList[swiper.isLocked ? "add" : "remove"](params.lockClass);
+                }
+            }));
+        }
+        function update() {
+            const {nextEl, prevEl} = swiper.navigation;
+            if (swiper.params.loop) {
+                toggleEl(prevEl, false);
+                toggleEl(nextEl, false);
+                return;
+            }
+            toggleEl(prevEl, swiper.isBeginning && !swiper.params.rewind);
+            toggleEl(nextEl, swiper.isEnd && !swiper.params.rewind);
+        }
+        function onPrevClick(e) {
+            e.preventDefault();
+            if (swiper.isBeginning && !swiper.params.loop && !swiper.params.rewind) return;
+            swiper.slidePrev();
+            emit("navigationPrev");
+        }
+        function onNextClick(e) {
+            e.preventDefault();
+            if (swiper.isEnd && !swiper.params.loop && !swiper.params.rewind) return;
+            swiper.slideNext();
+            emit("navigationNext");
+        }
+        function init() {
+            const params = swiper.params.navigation;
+            swiper.params.navigation = create_element_if_not_defined_createElementIfNotDefined(swiper, swiper.originalParams.navigation, swiper.params.navigation, {
+                nextEl: "swiper-button-next",
+                prevEl: "swiper-button-prev"
+            });
+            if (!(params.nextEl || params.prevEl)) return;
+            let nextEl = getEl(params.nextEl);
+            let prevEl = getEl(params.prevEl);
+            Object.assign(swiper.navigation, {
+                nextEl,
+                prevEl
+            });
+            nextEl = makeElementsArray(nextEl);
+            prevEl = makeElementsArray(prevEl);
+            const initButton = (el, dir) => {
+                if (el) el.addEventListener("click", "next" === dir ? onNextClick : onPrevClick);
+                if (!swiper.enabled && el) el.classList.add(...params.lockClass.split(" "));
+            };
+            nextEl.forEach((el => initButton(el, "next")));
+            prevEl.forEach((el => initButton(el, "prev")));
+        }
+        function destroy() {
+            let {nextEl, prevEl} = swiper.navigation;
+            nextEl = makeElementsArray(nextEl);
+            prevEl = makeElementsArray(prevEl);
+            const destroyButton = (el, dir) => {
+                el.removeEventListener("click", "next" === dir ? onNextClick : onPrevClick);
+                el.classList.remove(...swiper.params.navigation.disabledClass.split(" "));
+            };
+            nextEl.forEach((el => destroyButton(el, "next")));
+            prevEl.forEach((el => destroyButton(el, "prev")));
+        }
+        on("init", (() => {
+            if (false === swiper.params.navigation.enabled) disable(); else {
+                init();
+                update();
+            }
+        }));
+        on("toEdge fromEdge lock unlock", (() => {
+            update();
+        }));
+        on("destroy", (() => {
+            destroy();
+        }));
+        on("enable disable", (() => {
+            let {nextEl, prevEl} = swiper.navigation;
+            nextEl = makeElementsArray(nextEl);
+            prevEl = makeElementsArray(prevEl);
+            [ ...nextEl, ...prevEl ].filter((el => !!el)).forEach((el => el.classList[swiper.enabled ? "remove" : "add"](swiper.params.navigation.lockClass)));
+        }));
+        on("click", ((_s, e) => {
+            let {nextEl, prevEl} = swiper.navigation;
+            nextEl = makeElementsArray(nextEl);
+            prevEl = makeElementsArray(prevEl);
+            const targetEl = e.target;
+            if (swiper.params.navigation.hideOnClick && !prevEl.includes(targetEl) && !nextEl.includes(targetEl)) {
+                if (swiper.pagination && swiper.params.pagination && swiper.params.pagination.clickable && (swiper.pagination.el === targetEl || swiper.pagination.el.contains(targetEl))) return;
+                let isHidden;
+                if (nextEl.length) isHidden = nextEl[0].classList.contains(swiper.params.navigation.hiddenClass); else if (prevEl.length) isHidden = prevEl[0].classList.contains(swiper.params.navigation.hiddenClass);
+                if (true === isHidden) emit("navigationShow"); else emit("navigationHide");
+                [ ...nextEl, ...prevEl ].filter((el => !!el)).forEach((el => el.classList.toggle(swiper.params.navigation.hiddenClass)));
+            }
+        }));
+        const enable = () => {
+            swiper.el.classList.remove(...swiper.params.navigation.navigationDisabledClass.split(" "));
+            init();
+            update();
+        };
+        const disable = () => {
+            swiper.el.classList.add(...swiper.params.navigation.navigationDisabledClass.split(" "));
+            destroy();
+        };
+        Object.assign(swiper.navigation, {
+            enable,
+            disable,
+            update,
+            init,
+            destroy
+        });
+    }
     function initSliders() {
-        if (document.querySelector(".swiper")) new core(".testimonial-slider", {
+        if (document.querySelector(".testimonial__slider")) new core(".testimonial__slider", {
+            observer: true,
+            observeParents: true,
             slidesPerView: 2.5,
             spaceBetween: 30,
-            slidesPerGroup: 1,
+            autoHeight: true,
             speed: 800,
+            simulateTouch: true,
             loop: true,
             breakpoints: {
                 320: {
                     slidesPerView: 1,
+                    spaceBetween: 0,
+                    autoHeight: true
+                },
+                768: {
+                    slidesPerView: 1.5,
                     spaceBetween: 20
                 },
                 992: {
                     slidesPerView: 2.5,
-                    spaceBetween: 30
+                    spaceBetween: 20
+                }
+            }
+        });
+        if (document.querySelector(".offers__slider")) new core(".offers__slider", {
+            modules: [ Navigation ],
+            observer: true,
+            observeParents: true,
+            slidesPerView: 2,
+            spaceBetween: 30,
+            autoHeight: true,
+            speed: 800,
+            simulateTouch: true,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1
                 },
-                767: {
+                1300: {
                     slidesPerView: 2,
                     spaceBetween: 30
                 }
             },
-            simulateTouch: true
+            on: {}
+        });
+        if (document.querySelector(".popular__slider")) new core(".popular__slider", {
+            modules: [ Navigation ],
+            observer: true,
+            observeParents: true,
+            slidesPerView: 2,
+            spaceBetween: 30,
+            autoHeight: true,
+            speed: 800,
+            simulateTouch: true,
+            loop: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1
+                },
+                760: {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 20
+                },
+                1268: {
+                    slidesPerView: 4,
+                    spaceBetween: 30
+                }
+            },
+            on: {}
         });
     }
     window.addEventListener("load", (function(e) {
         initSliders();
     }));
+    class ScrollWatcher {
+        constructor(props) {
+            let defaultConfig = {
+                logging: true
+            };
+            this.config = Object.assign(defaultConfig, props);
+            this.observer;
+            !document.documentElement.classList.contains("watcher") ? this.scrollWatcherRun() : null;
+        }
+        scrollWatcherUpdate() {
+            this.scrollWatcherRun();
+        }
+        scrollWatcherRun() {
+            document.documentElement.classList.add("watcher");
+            this.scrollWatcherConstructor(document.querySelectorAll("[data-watch]"));
+        }
+        scrollWatcherConstructor(items) {
+            if (items.length) {
+                this.scrollWatcherLogging(`Прокинувся, стежу за об'єктами (${items.length})...`);
+                let uniqParams = uniqArray(Array.from(items).map((function(item) {
+                    return `${item.dataset.watchRoot ? item.dataset.watchRoot : null}|${item.dataset.watchMargin ? item.dataset.watchMargin : "0px"}|${item.dataset.watchThreshold ? item.dataset.watchThreshold : 0}`;
+                })));
+                uniqParams.forEach((uniqParam => {
+                    let uniqParamArray = uniqParam.split("|");
+                    let paramsWatch = {
+                        root: uniqParamArray[0],
+                        margin: uniqParamArray[1],
+                        threshold: uniqParamArray[2]
+                    };
+                    let groupItems = Array.from(items).filter((function(item) {
+                        let watchRoot = item.dataset.watchRoot ? item.dataset.watchRoot : null;
+                        let watchMargin = item.dataset.watchMargin ? item.dataset.watchMargin : "0px";
+                        let watchThreshold = item.dataset.watchThreshold ? item.dataset.watchThreshold : 0;
+                        if (String(watchRoot) === paramsWatch.root && String(watchMargin) === paramsWatch.margin && String(watchThreshold) === paramsWatch.threshold) return item;
+                    }));
+                    let configWatcher = this.getScrollWatcherConfig(paramsWatch);
+                    this.scrollWatcherInit(groupItems, configWatcher);
+                }));
+            } else this.scrollWatcherLogging("Сплю, немає об'єктів для стеження. ZzzZZzz");
+        }
+        getScrollWatcherConfig(paramsWatch) {
+            let configWatcher = {};
+            if (document.querySelector(paramsWatch.root)) configWatcher.root = document.querySelector(paramsWatch.root); else if ("null" !== paramsWatch.root) this.scrollWatcherLogging(`Эмм... батьківського об'єкта ${paramsWatch.root} немає на сторінці`);
+            configWatcher.rootMargin = paramsWatch.margin;
+            if (paramsWatch.margin.indexOf("px") < 0 && paramsWatch.margin.indexOf("%") < 0) {
+                this.scrollWatcherLogging(`йой, налаштування data-watch-margin потрібно задавати в PX або %`);
+                return;
+            }
+            if ("prx" === paramsWatch.threshold) {
+                paramsWatch.threshold = [];
+                for (let i = 0; i <= 1; i += .005) paramsWatch.threshold.push(i);
+            } else paramsWatch.threshold = paramsWatch.threshold.split(",");
+            configWatcher.threshold = paramsWatch.threshold;
+            return configWatcher;
+        }
+        scrollWatcherCreate(configWatcher) {
+            this.observer = new IntersectionObserver(((entries, observer) => {
+                entries.forEach((entry => {
+                    this.scrollWatcherCallback(entry, observer);
+                }));
+            }), configWatcher);
+        }
+        scrollWatcherInit(items, configWatcher) {
+            this.scrollWatcherCreate(configWatcher);
+            items.forEach((item => this.observer.observe(item)));
+        }
+        scrollWatcherIntersecting(entry, targetElement) {
+            if (entry.isIntersecting) {
+                !targetElement.classList.contains("_watcher-view") ? targetElement.classList.add("_watcher-view") : null;
+                this.scrollWatcherLogging(`Я бачу ${targetElement.classList}, додав клас _watcher-view`);
+            } else {
+                targetElement.classList.contains("_watcher-view") ? targetElement.classList.remove("_watcher-view") : null;
+                this.scrollWatcherLogging(`Я не бачу ${targetElement.classList}, прибрав клас _watcher-view`);
+            }
+        }
+        scrollWatcherOff(targetElement, observer) {
+            observer.unobserve(targetElement);
+            this.scrollWatcherLogging(`Я перестав стежити за ${targetElement.classList}`);
+        }
+        scrollWatcherLogging(message) {
+            this.config.logging ? functions_FLS(`[Спостерігач]: ${message}`) : null;
+        }
+        scrollWatcherCallback(entry, observer) {
+            const targetElement = entry.target;
+            this.scrollWatcherIntersecting(entry, targetElement);
+            targetElement.hasAttribute("data-watch-once") && entry.isIntersecting ? this.scrollWatcherOff(targetElement, observer) : null;
+            document.dispatchEvent(new CustomEvent("watcherCallback", {
+                detail: {
+                    entry
+                }
+            }));
+        }
+    }
+    modules_flsModules.watcher = new ScrollWatcher({});
     let addWindowScrollEvent = false;
+    function pageNavigation() {
+        document.addEventListener("click", pageNavigationAction);
+        document.addEventListener("watcherCallback", pageNavigationAction);
+        function pageNavigationAction(e) {
+            if ("click" === e.type) {
+                const targetElement = e.target;
+                if (targetElement.closest("[data-goto]")) {
+                    const gotoLink = targetElement.closest("[data-goto]");
+                    const gotoLinkSelector = gotoLink.dataset.goto ? gotoLink.dataset.goto : "";
+                    const noHeader = gotoLink.hasAttribute("data-goto-header") ? true : false;
+                    const gotoSpeed = gotoLink.dataset.gotoSpeed ? gotoLink.dataset.gotoSpeed : 500;
+                    const offsetTop = gotoLink.dataset.gotoTop ? parseInt(gotoLink.dataset.gotoTop) : 0;
+                    if (modules_flsModules.fullpage) {
+                        const fullpageSection = document.querySelector(`${gotoLinkSelector}`).closest("[data-fp-section]");
+                        const fullpageSectionId = fullpageSection ? +fullpageSection.dataset.fpId : null;
+                        if (null !== fullpageSectionId) {
+                            modules_flsModules.fullpage.switchingSection(fullpageSectionId);
+                            document.documentElement.classList.contains("menu-open") ? menuClose() : null;
+                        }
+                    } else gotoblock_gotoBlock(gotoLinkSelector, noHeader, gotoSpeed, offsetTop);
+                    e.preventDefault();
+                }
+            } else if ("watcherCallback" === e.type && e.detail) {
+                const entry = e.detail.entry;
+                const targetElement = entry.target;
+                if ("navigator" === targetElement.dataset.watch) {
+                    document.querySelector(`[data-goto]._navigator-active`);
+                    let navigatorCurrentItem;
+                    if (targetElement.id && document.querySelector(`[data-goto="#${targetElement.id}"]`)) navigatorCurrentItem = document.querySelector(`[data-goto="#${targetElement.id}"]`); else if (targetElement.classList.length) for (let index = 0; index < targetElement.classList.length; index++) {
+                        const element = targetElement.classList[index];
+                        if (document.querySelector(`[data-goto=".${element}"]`)) {
+                            navigatorCurrentItem = document.querySelector(`[data-goto=".${element}"]`);
+                            break;
+                        }
+                    }
+                    if (entry.isIntersecting) navigatorCurrentItem ? navigatorCurrentItem.classList.add("_navigator-active") : null; else navigatorCurrentItem ? navigatorCurrentItem.classList.remove("_navigator-active") : null;
+                }
+            }
+        }
+        if (getHash()) {
+            let goToHash;
+            if (document.querySelector(`#${getHash()}`)) goToHash = `#${getHash()}`; else if (document.querySelector(`.${getHash()}`)) goToHash = `.${getHash()}`;
+            goToHash ? gotoblock_gotoBlock(goToHash, true, 500, 20) : null;
+        }
+    }
     setTimeout((() => {
         if (addWindowScrollEvent) {
             let windowScroll = new Event("windowScroll");
@@ -2663,4 +3081,5 @@
     window["FLS"] = true;
     isWebp();
     menuInit();
+    pageNavigation();
 })();

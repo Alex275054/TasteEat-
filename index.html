@@ -6,10 +6,11 @@
 	<meta charset="UTF-8">
 	<meta name="format-detection" content="telephone=no">
 	<!-- <style>body{opacity: 0;}</style> -->
-	<link rel="stylesheet" href="css/style.min.css?_v=20230211173437">
+	<link rel="stylesheet" href="css/style.min.css?_v=20230224163639">
 	<link rel="shortcut icon" href="favicon.ico">
 	<!-- <meta name="robots" content="noindex, nofollow"> -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css?_v=20230224163639" /> -->
 </head>
 
 <body>
@@ -26,16 +27,16 @@
 									<picture><source srcset="img/header/logo.webp" type="image/webp"><img src="img/header/logo.png" alt="" class="menu__logo-img"></picture>
 								</a>
 							</div>
-							<a href="#" class="menu__btn btn">Reservation</a>
+							<a data-goto=".reservation" href="#" class="menu__btn btn">Reservation</a>
 						</div>
 						<div class="menu__actions">
 							<ul class="menu__list">
-								<li class="menu__item"><a href="" class="menu__link">Home</a></li>
-								<li class="menu__item"><a href="" class="menu__link">About Us</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Our Menu</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Pages</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Blog</a></li>
-								<li class="menu__item"><a href="" class="menu__link">Contact Us</a></li>
+								<li class="menu__item"><a data-goto=".welcome" href="#" class="menu__link">Home</a></li>
+								<li class="menu__item"><a data-goto=".about" href="#" class="menu__link">About Us</a></li>
+								<li class="menu__item"><a data-goto=".menu-section" href="#" class="menu__link">Our Menu</a></li>
+								<li class="menu__item"><a data-goto=".testimonial" href="#" class="menu__link">Pages</a></li>
+								<li class="menu__item"><a data-goto=".blog" href="#" class="menu__link">Blog</a></li>
+								<li class="menu__item"><a data-goto=".reservation" href="#" class="menu__link">Contact Us</a></li>
 							</ul>
 							<div class="menu__soc-links">
 								<a href="#" class="menu__soc-link-img"><picture><source srcset="img/header/01.webp" type="image/webp"><img src="img/header/01.png" alt="" class="menu__soc-link-img-main"></picture></a>
@@ -62,6 +63,7 @@
 					</div>
 				</div>
 			</section>
+			<!-- //========================================================================================================================================== -->
 			<section class="about">
 				<div class="about__container">
 					<div class="about__schedule schedule-about">
@@ -119,6 +121,7 @@
 					</div>
 				</div>
 			</section>
+			<!-- //========================================================================================================================================== -->
 			<section class="menu-section">
 				<div class="menu-section__container">
 					<div class="menu-section__description description-menu-section">
@@ -128,7 +131,7 @@
 							great
 							inspired food in an environment designed with individual touches unique to the local area.</p>
 						<div class="description-menu-section__description-img">
-							<picture><source srcset="img/menu-section/main.webp" type="image/webp"><img src="img/menu-section/main.png" alt="" class="menu-section__description-img-main"></picture>
+							<picture><source srcset="img/menu/main.webp" type="image/webp"><img src="img/menu/main.png" alt="" class="menu-section__description-img-main"></picture>
 						</div>
 						<a href="#" class="description-menu-section__btn btn">See all dishes</a>
 					</div>
@@ -236,73 +239,154 @@
 						</div>
 					</div>
 			</section>
+			<!-- //========================================================================================================================================== -->
 			<section class="testimonial">
 				<div class="testimonial__container">
-					<p class="testimonial__sub-title">Testimonial </p>
-					<h2 class="testimonial__title">our clients say</h2>
-					<p class="testimonial__text">We love to hear from customers, so please leave a comment or say hello in
-						an email.</p>
+					<div class="testimonial__title title-testimonial">
+						<p class="title-testimonial__sub-title sub-title">Testimonial</p>
+						<h2 class="title-testimonial__title-main title">our clients say</h2>
+						<p class="title-testimonial__text">We love to hear from customers, so please leave a comment or say
+							hello in an email.</p>
+					</div>
 
 					<!-- Оболочка слайдера -->
-					<div class="ts__slider testimonial-slider swiper">
+					<div class="testimonial__slider swiper">
 						<!-- Двигающееся часть слайдера -->
-						<div class="ts__wrapper swiper-wrapper">
-							<div class="testimonial-slider__slide swiper-slide">
-								<div class="testimonial__pers pers-testimonial">
-									<div class="pers-testimonial__img">
-										<picture><source srcset="img/Testimonial/01.webp" type="image/webp"><img src="img/Testimonial/01.png" alt="" class="pers-testimonial__img-main"></picture>
-										<div class="pers-testimonial__text">
-											<p class="pers-testimonial__title">Natasha D</p>
-											<p class="pers-testimonial__loc">Newyork</p>
+						<div class="testimonial__wrapper swiper-wrapper">
+							<!-- Слайд -->
+							<div class="testimonial__slide slide-testimonial swiper-slide">
+								<div class="slide-testimonial__title">
+									<div class="slide-testimonial__img">
+										<picture><source srcset="img/Testimonial/01.webp" type="image/webp"><img src="img/Testimonial/01.png" alt="" class="slide-testimonial__img-main"></picture>
+									</div>
+									<div class="slide-testimonial__info">
+										<h3 class="slide-testimonial__name">Natasha D</h3>
+										<p class="slide-testimonial__city">Newyork</p>
+									</div>
+								</div>
+								<hr class="slide-testimonial__line">
+								<p class="slide-testimonial__text">
+									They known for its fabulous taste and food. Anywhere you go your hunger is satisfied. The best chicken & burgers those
+									are yummy.
+								</p>
+							</div>
+							<!-- Слайд -->
+							<div class="testimonial__slide slide-testimonial swiper-slide">
+								<div class="slide-testimonial__title">
+									<div class="slide-testimonial__img">
+										<picture><source srcset="img/Testimonial/02.webp" type="image/webp"><img src="img/Testimonial/02.png" alt="" class="slide-testimonial__img-main"></picture>
+									</div>
+									<div class="slide-testimonial__info">
+										<h3 class="slide-testimonial__name">Jack Sparrow</h3>
+										<p class="slide-testimonial__city">Salt Lake City</p>
+									</div>
+								</div>
+								<hr class="slide-testimonial__line">
+								<p class="slide-testimonial__text">
+									I have visited this fantastic restaurant on several occasions, food is absolutely outstanding & attention to detail is
+									in league of its own.
+								</p>
+							</div>
+							<!-- Слайд -->
+							<div class="testimonial__slide slide-testimonial swiper-slide">
+								<div class="slide-testimonial__title">
+									<div class="slide-testimonial__img">
+										<picture><source srcset="img/Testimonial/03.webp" type="image/webp"><img src="img/Testimonial/03.png" alt="" class="slide-testimonial__img-main"></picture>
+									</div>
+									<div class="slide-testimonial__info">
+										<h3 class="slide-testimonial__name">Martin</h3>
+										<p class="slide-testimonial__city">San Diego</p>
+									</div>
+								</div>
+								<hr class="slide-testimonial__line">
+								<p class="slide-testimonial__text">
+									Perfectly known for its fabulous taste and food. Anywhere your hunger is satisfied. They give best fried chicken and
+									burgers those are yummy.
+								</p>
+							</div>
+							<!-- Слайд -->
+							<div class="testimonial__slide slide-testimonial swiper-slide">
+								<div class="slide-testimonial__title">
+									<div class="slide-testimonial__img">
+										<picture><source srcset="img/Testimonial/01.webp" type="image/webp"><img src="img/Testimonial/01.png" alt="" class="slide-testimonial__img-main"></picture>
+									</div>
+									<div class="slide-testimonial__info">
+										<h3 class="slide-testimonial__name">Natasha D</h3>
+										<p class="slide-testimonial__city">Newyork</p>
+									</div>
+								</div>
+								<hr class="slide-testimonial__line">
+								<p class="slide-testimonial__text">
+									They known for its fabulous taste and food. Anywhere you go your hunger is satisfied. The best chicken & burgers those
+									are yummy.
+								</p>
+							</div>
+						</div>
+						<!-- Если нужна пагинация -->
+						<div class="swiper-pagination"></div>
+						<!-- Если нужна навигация (влево/вправо) -->
+						<button type="button" class="swiper-button-prev">
+							<!-- <img src="img/wal.svg" alt="" class="swiper-button-prev-main"> -->
+						</button>
+						<button type="button" class="swiper-button-next">
+							<!-- <img src="img/war.svg" alt="" class="swiper-button-next-main"> -->
+						</button>
+						<!-- Если нужен скролбар -->
+						<div class="swiper-scrollbar"></div>
+					</div>
+				</div>
+			</section>
+			<!-- //========================================================================================================================================== -->
+			<section class="lanterns"></section>
+			<!-- //========================================================================================================================================== -->
+			<section class="offers">
+				<div class="offers__container">
+					<div class="offers__header">
+						<p class="offers__sub-title sub-title">offers</p>
+						<h2 class="offers__title title">Our Offer dishes</h2>
+						<h2 class="offers__text">
+							<p>Our Offer Our chefs create melt-in-your-mouth dishes that'll satiate even
+								the fussiest eaters now</p>
+							<p>the dishes are in offers use it based on hunger.</p>
+						</h2>
+					</div>
+
+					<!-- Оболочка слайдера -->
+					<div class="offers__slider swiper">
+						<!-- Двигающееся часть слайдера -->
+						<div class="offers__wrapper swiper-wrapper">
+							<!-- Слайд -->
+							<div class="offers__slide swiper-slide">
+								<div class="offers__burger-slide">
+									<div class="offers__text">
+										<div class="offers__price offers__price_burger">
+											<p class="offers__price-sub-title">Only</p>
+											<p class="offers__price-main">$10</p>
 										</div>
+										<p class="offers__sub-title">50% Offer Going</p>
+										<h3 class="offers__title">Chicken Burger</h3>
+										<p class="offers__description">Chicken burger with the tasty toppings and leaves.</p>
 									</div>
-									<hr class="testimonial__item-line">
-									<p class="testimonial__item-text">They known for its fabulous taste and food. Anywhere you
-										go
-										your hunger is satisfied. The best chicken & burgers those are yummy.</p>
+									<div class="offers__img">
+										<picture><source srcset="img/offers/01.webp" type="image/webp"><img src="img/offers/01.png" alt="" class="offers__img-main"></picture>
+									</div>
 								</div>
 							</div>
-							<div class="testimonial-slider__slide swiper-slide">
-								<div class="testimonial__pers pers-testimonial">
-									<div class="pers-testimonial__img"><picture><source srcset="img/Testimonial/02.webp" type="image/webp"><img src="img/Testimonial/02.png" alt="" class="pers-testimonial__img-main"></picture>
+							<!-- Слайд -->
+							<div class="offers__slide swiper-slide">
+								<div class="offers__pizza-slide">
+									<div class="offers__text">
+										<div class="offers__price offers__price_pizza">
+											<p class="offers__price-sub-title">Only</p>
+											<p class="offers__price-main">$9</p>
+										</div>
+										<p class="offers__sub-title">50% Offer Going</p>
+										<h3 class="offers__title">Chicken Pizza</h3>
+										<p class="offers__description">Pizza with multiple flavor and the toping are mixed.</p>
 									</div>
-									<div class="pers-testimonial__text">
-										<p class="pers-testimonial__title">Jack Sparrow</p>
-										<p class="pers-testimonial__loc">Salt Lake City</p>
+									<div class="offers__img">
+										<picture><source srcset="img/offers/02.webp" type="image/webp"><img src="img/offers/02.png" alt="" class="offers__img-main"></picture>
 									</div>
-									<hr class="testimonial__item-line">
-									<p class="testimonial__item-text">I have visited this fantastic restaurant on several
-										occasions, food is absolutely outstanding & attention to detail is in league of its
-										own.
-									</p>
-								</div>
-							</div>
-							<div class="testimonial-slider__slide swiper-slide">
-								<div class="testimonial__pers pers-testimonial">
-									<div class="pers-testimonial__img"><picture><source srcset="img/Testimonial/03.webp" type="image/webp"><img src="img/Testimonial/03.png" alt="" class="pers-testimonial__img-main"></picture>
-									</div>
-									<div class="pers-testimonial__text">
-										<p class="pers-testimonial__title">Martin</p>
-										<p class="pers-testimonial__loc">San Diego</p>
-									</div>
-									<hr class="testimonial__item-line">
-									<p class="testimonial__item-text">Perfectly known for its fabulous taste and food.
-										Anywhere
-										your hunger is satisfied. They give best fried chicken and burgers those are yummy.</p>
-								</div>
-							</div>
-							<div class="testimonial-slider__slide swiper-slide">
-								<div class="testimonial__pers pers-testimonial">
-									<div class="pers-testimonial__img"><picture><source srcset="img/Testimonial/02.webp" type="image/webp"><img src="img/Testimonial/02.png" alt="" class="pers-testimonial__img-main"></picture>
-									</div>
-									<div class="pers-testimonial__text">
-										<p class="pers-testimonial__title">Jack Sparrow</p>
-										<p class="pers-testimonial__loc">Salt Lake City</p>
-									</div>
-									<hr class="testimonial__item-line">
-									<p class="testimonial__item-text">I have visited this fantastic restaurant on several
-										occasions, food is
-										absolutely outstanding & attention to detail is in league of its own.</p>
 								</div>
 							</div>
 						</div>
@@ -317,70 +401,17 @@
 
 				</div>
 			</section>
-			<section class="lanterns"></section>
-			<section class="offers">
-				<div class="offers__container">
-					<p class="offers__sub-title">offers</p>
-					<h2 class="offers__title">Our Offer dishes</h2>
-					<h2 class="offers__text">Our Offer Our chefs create melt-in-your-mouth dishes that'll satiate even
-						the fussiest eaters now the dishes are in offers use it based on hunger.</h2>
-					<div class="offers-slider swiper-container">
-						<!-- Слайдер -->
-						<div class="offers-slider__wrapper swiper-wrapper">
-
-							<div class="offers-slider__slide swiper-slide">
-								<div class="offers__dish offers__dish-burger">
-									<div class="offers__dish-burger-text dish-burger-text-offers">
-										<div class="dish-burger-text-offers__price">
-											<div class="dish-burger-text-offers__price-text">
-												<p class="dish-burger-text-offers__price-sub-title">Only</p>
-												<p class="dish-burger-text-offers__price-main">$10</p>
-											</div>
-										</div>
-										<p class="dish-burger-text-offers__sub-title">50% Offer Going</p>
-										<h2 class="dish-burger-text-offers__title">Chicken Burger</h2>
-										<p class="dish-burger-text-offers__text">Chicken burger with the tasty toppings and
-											leaves.</p>
-									</div>
-									<div class="offers__dish-burger-img dish-burger-img-offers">
-										<picture><source srcset="img/offers/01.webp" type="image/webp"><img src="img/offers/01.png" alt="Бургер" class="offers__dish-burger-img-main"></picture>
-									</div>
-								</div>
-							</div>
-							<div class="offers-slider__slide swiper-slide">
-								<div class="offers__dish offers__dish-pizza">
-									<div class="offers__dish-pizza0-text dish-pizza-text-offers">
-										<div class="dish-pizza-text-offers__price">
-											<div class="dish-pizza-text-offers__price-text">
-												<p class="dish-pizza-text-offers__price-sub-title">Only</p>
-												<p class="dish-pizza-text-offers__price-main">$9</p>
-											</div>
-										</div>
-										<p class="dish-pizza-text-offers__sub-title">50% Offer Going</p>
-										<h2 class="dish-pizza-text-offers__title">Chicken Pizza</h2>
-										<p class="dish-pizza-text-offers__text">Pizza with multiple flavor and the toping are
-											mixed.</p>
-									</div>
-									<div class="offers__dish-pizza-img dish-pizza-img-offers">
-										<picture><source srcset="img/offers/02.webp" type="image/webp"><img src="img/offers/02.png" alt="Пицца" class="offers__dish-pizza-img-main"></picture>
-									</div>
-								</div>
-							</div>
-
-						</div>
-					</div>
-				</div>
-			</section>
+			<!-- //========================================================================================================================================== -->
 			<section class="popular">
 				<div class="popular__container">
-					<div class="popular__text">
-						<p class="popular__sub-title">menu-section</p>
-						<p class="popular__title">Popular Dishes</p>
-						<p class="popular__main-text">There is a game between the waiters in restaurant to see who serves
+					<div class="popular__title">
+						<p class="popular__sub-title sub-title">menu-section</p>
+						<p class="popular__title-main title">Popular Dishes</p>
+						<p class="popular__text">There is a game between the waiters in restaurant to see who serves
 							the food to<br> each table fastest. That led to attempting the Guinness Record. </p>
 					</div>
-					<div class="popular-items-slider swiper-container">
-						<!-- Слайдер -->
+					<div class="popular__slider popular-items-slider swiper-container">
+						<!-- Слайдер  -->
 						<div class="popular-items-slider__wrapper swiper-wrapper">
 
 							<div class="popular-items-slider__item item-popular-items-slider swiper-slide">
@@ -437,17 +468,18 @@
 
 						</div>
 					</div>
-					<div class="popular__container-bottom">
+					<div class="popular__bottom">
 						<a href="#" class="popular__btn btn">See all dishes</a>
 					</div>
 				</div>
 			</section>
+			<!-- //========================================================================================================================================== -->
 			<section class="suggestions">
 				<div class="suggestions__container">
-					<div class="suggestions__text">
-						<div class="suggestions__sub-title">What we offer</div>
-						<div class="suggestions__title">Our Great Services</div>
-						<div class="suggestions__text-main">
+					<div class="suggestions__title">
+						<div class="suggestions__sub-title sub-title">What we offer</div>
+						<div class="suggestions__title-main title">Our Great Services</div>
+						<div class="suggestions__text">
 							The atmosphere set the stage. It’s about more <br> than just a dining room away from your home.
 							<br> food takes the spotlight as
 							guests.
@@ -475,6 +507,7 @@
 					</div>
 				</div>
 			</section>
+			<!-- //========================================================================================================================================== -->
 			<section class="blog">
 				<div class="blog__container">
 					<div class="blog__text">
@@ -522,6 +555,7 @@
 					</div>
 				</div>
 			</section>
+			<!-- //========================================================================================================================================== -->
 			<section class="reservation">
 				<div class="reservation__container">
 					<form class="reservation__form">
@@ -564,15 +598,17 @@
 					</div>
 				</div>
 				<div class="footer__row footer__row-middle">
-					<h2 class="footer__contact-title sub-title">Contact</h2>
+					<div class="footer__contact-title-wrapper">
+						<h2 class="footer__contact-title sub-title">Contact</h2>
+					</div>
 					<h2 class="footer__main-title">Join our mailing list for updates, <br> Get news & offers events.</h2>
 					<p class="footer__schedule-title sub-title">Working Hours</p>
 				</div>
 				<div class="footer__row">
 					<div class="footer__contact">
 						<p class="footer__adress">5 Rue Dalou, 75015 Paris</p>
-						<p class="footer__phone">+123 456 789</p>
-						<p class="footer__email">josefin@mail.com</p>
+						<p class="footer__phone"><a href="tel:+123456789" class="footer__phone footer__phone-link">+123 456 789</a></p>
+						<p class="footer__email"><a href="mailto:josefin@mail.com" class="footer__email-link">josefin@mail.com</a></p>
 					</div>
 					<div class="footer__actions">
 						<input type="text" class="footer__input" placeholder="Email">
@@ -609,7 +645,25 @@
 			</div>
 		</footer>
 	</div>
-	<script src="js/app.min.js?_v=20230211173437"></script>
+	<script src="js/app.min.js?_v=20230224163639"></script>
 </body>
 
 </html>
+
+
+<!-- Слайд -->
+<!-- <div class="testimonial__slide slide-testimonial swiper-slide">
+									<div class="slide-testimonial__title">
+										<div class="slide-testimonial__img">
+											<picture><source srcset="img/Testimonial/01.webp" type="image/webp"><img src="img/Testimonial/01.png" alt="" class="slide-testimonial__img-main"></picture>
+										</div>
+										<div class="slide-testimonial__info">
+											<h3 class="slide-testimonial__name">Natasha D</h3>
+											<p class="slide-testimonial__city">Newyork</p>
+										</div>
+									</div>
+									<hr class="slide-testimonial__line">
+									<p class="slide-testimonial__description">They known for its fabulous taste and food.
+										Anywhere you go your hunger is satisfied. The best chicken & burgers those
+										are yummy.</p>
+								</div> -->

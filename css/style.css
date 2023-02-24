@@ -159,15 +159,22 @@ h6 {
   text-transform: uppercase;
   border-top: 1px solid #E1B168;
   border-bottom: 1px solid #E1B168;
-  padding: 8px 0;
   font-size: 15px;
   margin-bottom: 22px;
   display: inline-block;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.625rem 0rem 0.25rem 0rem;
 }
 
 .header {
-  padding: 3.125rem 0;
+  padding: 3.125rem 0 0 0;
   background-color: #292E36;
+  min-height: 7.5rem;
 }
 
 .header__container {
@@ -256,7 +263,6 @@ h6 {
       -ms-flex-pack: justify;
           justify-content: space-between;
   border-top: 1px solid #fff;
-  border-bottom: 1px dashed #fff;
   min-height: 5.625rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -296,7 +302,7 @@ h6 {
 
 .footer {
   background-color: #292E36;
-  padding: 300px 0 0;
+  padding: 9.375rem 0 0;
   color: #fff;
   text-align: center;
   font-family: "Josefin Sans", sans-serif;
@@ -326,6 +332,8 @@ h6 {
 .footer__logo {
   position: relative;
   bottom: 100px;
+  max-width: 23.75rem;
+  padding-top: 3.125rem;
 }
 
 .footer__logo-main {
@@ -333,12 +341,14 @@ h6 {
       -ms-flex: 0 1 375px;
           flex: 0 1 375px;
   padding: 0 15px 0;
+  max-width: 100%;
 }
 
 .footer__soxial {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  padding-top: 3.125rem;
 }
 
 .footer__social-network:not(:last-child) {
@@ -360,9 +370,14 @@ h6 {
   bottom: 70px;
 }
 
+.footer .footer__contact-title-wrapper {
+  padding-right: 0.9375rem;
+}
+
 .footer__main-title {
   font-size: 20px;
   margin-bottom: 30px;
+  line-height: 1.5;
 }
 
 .footer__contact {
@@ -370,6 +385,7 @@ h6 {
        text-align-last: left;
   margin-bottom: 30px;
   padding-right: 15px;
+  line-height: 1.5;
 }
 
 .footer__phone {
@@ -389,18 +405,20 @@ h6 {
       -ms-flex: 0 1 665px;
           flex: 0 1 665px;
   padding: 15px 25px;
-  font-size: 22px;
+  font-size: 1.375rem;
   background: transparent;
   border: 1px solid #fff;
   outline: 0;
   color: #fff;
+  position: relative;
+  top: 0.3125rem;
 }
 
 .footer__btn {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 210px;
           flex: 0 1 210px;
-  padding: 15px 25px;
+  padding: 1.0625rem 1.5625rem;
   font-size: 22px;
   background-color: #fff;
   color: #000;
@@ -416,6 +434,10 @@ h6 {
 
 .footer__btn:hover {
   background-color: rgb(138, 138, 138);
+}
+
+.footer__schedule p {
+  margin-bottom: 0.625rem;
 }
 
 .footer__time span {
@@ -438,6 +460,7 @@ h6 {
           align-items: center;
   font-size: 20px;
   min-height: 90px;
+  line-height: 1.5;
 }
 
 .footer__descriptions span {
@@ -743,72 +766,110 @@ h6 {
 }
 
 .testimonial {
-  padding: 140px 0 120px;
-  background-color: #292E36;
+  background: #292E36;
+  padding: 8.75rem 0rem 7.5rem 0rem;
   color: #fff;
-  font-family: "Josefin Sans", sans-serif;
 }
 
-.testimonial__sub-title {
-  text-transform: uppercase;
-  border-top: 1px solid #E1B168;
-  border-bottom: 1px solid #E1B168;
-  padding: 8px 0;
-  font-size: 15px;
-  margin-bottom: 22px;
-  display: inline-block;
-  font-family: "Josefin Sans", sans-serif;
+.title-testimonial {
+  margin-bottom: 3.75rem;
 }
 
-.testimonial__title {
-  font-size: 40px;
-  font-family: "Cormorant Infant", serif;
+.title-testimonial__sub-title {
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 22px;
+}
+
+.title-testimonial__title-main {
+  font-family: "Cormorant Infant";
+  font-weight: 400;
+  font-size: 2.5rem;
+  line-height: 56px;
+  letter-spacing: 0.2px;
   text-transform: capitalize;
-  margin-bottom: 15px;
+  margin-bottom: 0.9375rem;
 }
 
-.testimonial__text {
-  font-size: 15px;
-  margin-bottom: 88px;
+.title-testimonial__text {
+  font-family: "Josefin Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
 }
 
-.testimonial__items {
+.slide-testimonial {
+  max-width: 34.0625rem;
+  padding: 0rem 2.5rem 0rem;
+  background: #343942;
+}
+
+.slide-testimonial__title {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  margin-bottom: 1.875rem;
 }
 
-.testimonial__item {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 543px;
-          flex: 0 0 543px;
-  padding: 0 38px;
-  background-color: #343942;
+.slide-testimonial__img {
+  margin-right: 1.875rem;
 }
 
-.testimonial__item:not(:last-child) {
-  margin-right: 30px;
+.slide-testimonial__name {
+  font-family: "Cormorant Infant";
+  font-weight: 400;
+  font-size: 1.875rem;
+  line-height: 42px;
+  margin-bottom: 0.9375rem;
 }
 
-.pers-testimonial__img {
-  display: inline-block;
-}
-
-.pers-testimonial__text {
-  display: inline-block;
-  padding-left: 30px;
-  vertical-align: top;
-  padding-top: 25px;
-}
-
-.pers-testimonial__title {
-  font-size: 30px;
-  font-family: "Cormorant Infant", serif;
-  margin-bottom: 15px;
-}
-
-.pers-testimonial__loc {
+.slide-testimonial__city {
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 30px;
   color: #E1B168;
+}
+
+.slide-testimonial__line {
+  background: #797E89;
+  height: 0.0625rem;
+  margin-bottom: 2rem;
+}
+
+.slide-testimonial__text {
+  font-family: "Cormorant Infant";
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 38px;
+}
+
+.swiper-button-next-main {
+  width: 1.25rem;
+  position: relative;
+  bottom: 3.125rem;
+}
+
+.swiper-button-prev-main {
+  width: 1.25rem;
+  position: relative;
+  bottom: 3.125rem;
+}
+
+/* Пагинация */
+
+.testimonial__slider .swiper-pagination {
+  bottom: 30px;
+}
+
+/* Буллеты */
+
+.testimonial__slider .swiper-pagination-bullet {
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+  background-color: #fff;
 }
 
 .no-webp .lanterns{
@@ -821,93 +882,199 @@ h6 {
 }
 
 .offers {
-  padding: 145px 0;
+  padding: 9.0625rem 0;
 }
 
-.offers__text {
-  text-align: center;
+.offers__container {
+  padding: 8.75rem 0.9375rem;
 }
 
-.offers__sub-title {
-  text-transform: uppercase;
-  border-top: 1px solid #E1B168;
-  border-bottom: 1px solid #E1B168;
-  padding: 8px 0;
-  font-size: 15px;
-  margin-bottom: 22px;
-  display: inline-block;
-  font-family: "Josefin Sans", sans-serif;
+.offers .offers__header {
+  margin-bottom: 1.875rem;
 }
 
 .offers__title {
-  font-size: 40px;
-  font-family: "Cormorant Infant", serif;
-  text-transform: capitalize;
-  margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.offers__main-text {
-  font-size: 20px;
-  font-family: "Josefin Sans", sans-serif;
-  margin-bottom: 40px;
+.offers__sub-title {
+  margin-bottom: 1.25rem;
 }
 
-.items-offers {
-  font-family: "Josefin Sans", sans-serif;
+.offers__text {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 17.375rem;
+          flex: 0 0 17.375rem;
 }
 
-.items-offers__item {
+.no-webp .offers__burger-slide{
+  background-image: url("../img/offers/1.png"); }
+
+.offers__burger-slide {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 665px;
-          flex: 0 0 665px;
-  padding: 50px 50px 50px;
-  -webkit-box-pack: start;
-      -ms-flex-pack: start;
-          justify-content: flex-start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-negative: 1;
+      flex-shrink: 1;
+  min-height: 25rem;
+  padding-top: 1.875rem;
 }
 
-.no-webp .items-offers__item-burger{
-  background: url("../img/offers/1.png") no-repeat; }
+.no-webp .offers__pizza-slide{
+  background-image: url("../img/offers/2.png"); }
 
-.items-offers__text {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 278px;
-          flex: 0 0 278px;
+.offers__pizza-slide {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 25rem;
+  padding: 1.875rem;
 }
 
-.items-offers__sub-price-main {
-  z-index: 2;
+.offers__text {
+  margin-right: 1.5rem;
+}
+
+.no-webp .offers__price_burger{
+  background: url("../img/offers/white.png") no-repeat; }
+
+.offers__price_burger {
   position: relative;
-  bottom: 120px;
-  left: 20px;
+  bottom: 3.125rem;
+  height: 6.25rem;
+  padding: 0.3125rem 0rem 0rem 3.125rem;
 }
 
-.items-offers__sub-title {
-  font-size: 15px;
-  margin-bottom: 8px;
+.offers__price-sub-title {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 10px;
 }
 
-.items-offers__title {
-  margin-bottom: 10px;
-  font-size: 40px;
-  margin-right: 25px;
-  font-family: "Cormorant Infant", serif;
+.offers__price-main {
+  font-family: "Cormorant Infant";
+  font-weight: 400;
+  font-size: 3.75rem;
+  line-height: 66px;
 }
 
-.items-offers__main-text {
+.offers__sub-title {
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 22px;
+  letter-spacing: 4.5px;
+  text-transform: uppercase;
+  color: #292E36;
+  border-top: 1px solid #292E36;
+  border-bottom: 1px solid #292E36;
+  display: inline-block;
+  padding-top: 0.3125rem;
+  margin-bottom: 0.625rem;
+}
+
+.offers__title {
+  -moz-text-align-last: left;
+       text-align-last: left;
+  font-family: "Cormorant Infant";
+  font-weight: 400;
+  font-size: 2.5rem;
+  letter-spacing: 0.2px;
+}
+
+.offers__description {
+  font-family: "Josefin Sans";
+  font-weight: 400;
+  font-size: 1.25rem;
+  line-height: 30px;
+  letter-spacing: 0.2px;
+}
+
+.no-webp .offers__price_pizza{
+  background: url("../img/offers/dark.png") no-repeat; }
+
+.offers__price_pizza {
+  position: relative;
+  bottom: 3.125rem;
+  height: 6.25rem;
+  color: #fff;
+  padding: 0.3125rem 0rem 0rem 3.125rem;
+}
+
+.popular {
+  padding: 7.5rem 0rem;
+}
+
+.popular__title {
+  text-align: center;
+  margin-bottom: 3.125rem;
+}
+
+.popular__text {
+  line-height: 2;
+}
+
+.popular__bottom {
+  width: 100%;
+  text-align: center;
+}
+
+.swiper-container {
+  margin-bottom: 6.25rem;
+}
+
+.item-popular-items-slider {
+  max-width: 19.8125rem;
+}
+
+.item-popular-items-slider__img {
+  margin-bottom: 1.25rem;
+}
+
+.item-popular-items-slider__title {
+  margin-bottom: 0.9375rem;
+}
+
+.item-popular-items-slider__title-main {
+  font-family: "Cormorant Infant";
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 42px;
+}
+
+.item-popular-items-slider__line {
+  height: 0.0625rem;
+  background: #DCDCDC;
+  margin-bottom: 0.9375rem;
+}
+
+.item-popular-items-slider__description {
+  line-height: 2;
+  font-family: "Josefin Sans";
+  font-weight: 400;
   font-size: 20px;
+  line-height: 30px;
 }
-
-.no-webp .items-offers__item-pizza{
-  background: url("../img/offers/2.png") no-repeat; }
 
 .suggestions {
   background-color: #292E36;
   color: #fff;
-  padding: 140px 0;
+  padding: 8.75rem 0;
   font-family: "Josefin Sans", sans-serif;
 }
 
@@ -920,7 +1087,7 @@ h6 {
           justify-content: space-between;
 }
 
-.suggestions__text {
+.suggestions__title {
   margin-bottom: 50px;
 }
 
@@ -934,12 +1101,16 @@ h6 {
   display: inline-block;
 }
 
-.suggestions__title {
+.suggestions__title-main {
   font-size: 40px;
   font-family: "Cormorant Infant", serif;
   text-transform: capitalize;
   margin-bottom: 30px;
   line-height: 1.5;
+}
+
+.suggestions__text {
+  line-height: 2;
 }
 
 .items-suggestions {
@@ -959,9 +1130,6 @@ h6 {
   height: 225px;
   text-align: center;
   padding: 45px 0 0 0;
-}
-
-.items-suggestions__item:not(:last-child) {
   margin: 0 20px 20px 0;
 }
 
@@ -1273,13 +1441,6 @@ h6 {
   }
 }
 
-@media (max-width: 550px) {
-  .footer__logo {
-    bottom: 0;
-    margin-bottom: 70px;
-  }
-}
-
 @media (max-width: 500px) {
   .suggestions__container {
     -ms-flex-wrap: wrap;
@@ -1420,9 +1581,96 @@ h6 {
   }
 }
 
+@media (max-width: 43.5625rem) {
+  .footer__contact {
+    margin: 0 auto;
+    margin-bottom: 0.625rem;
+  }
+
+  .footer__actions {
+    margin: 0 auto 30px;
+  }
+
+  .footer__schedule {
+    margin: 0 auto 30px;
+  }
+}
+
+@media (max-width: 38.125rem) {
+  .reservation__btn {
+    padding: 1.875rem 1.875rem;
+  }
+}
+
 @media (max-width: 37.5rem) {
   .menu__phone {
     margin-bottom: 1.875rem;
+  }
+
+  .footer {
+    padding: 1.875rem 0 0;
+  }
+
+  .footer__logo {
+    bottom: 0;
+    margin-bottom: 70px;
+  }
+
+  .footer__logo-main {
+    bottom: 0;
+    margin-bottom: 1.875rem;
+  }
+}
+
+@media (max-width: 33.125rem) {
+  .footer__title {
+    margin: 0 auto;
+  }
+
+  .footer__logo {
+    margin: 0 auto;
+  }
+
+  .footer__soxial {
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 31.25rem) {
+  .offers__pizza-slide {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+
+  .items-suggestions {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+
+  .reservation__form {
+    padding: 8.75rem 0.9375rem;
+  }
+}
+
+@media (max-width: 28.125rem) {
+  .footer__input {
+    margin-bottom: 0.3125rem;
+  }
+}
+
+@media (max-width: 25.4375rem) {
+  .footer .footer__contact-title-wrapper {
+    margin: 0 auto;
+  }
+
+  .footer__main-title {
+    margin: 0 auto;
+    margin-bottom: 0.625rem;
+  }
+
+  .footer__schedule-title {
+    margin: 0 auto;
   }
 }
 
@@ -1443,9 +1691,13 @@ h6 {
 
 .webp .lanterns{ background: url(../img/lanterns/lanterns-bg.webp); }
 
-.webp .items-offers__item-burger{ background: url(../img/offers/1.webp) no-repeat; }
+.webp .offers__burger-slide{ background-image: url(../img/offers/1.webp); }
 
-.webp .items-offers__item-pizza{ background: url(../img/offers/2.webp) no-repeat; }
+.webp .offers__pizza-slide{ background-image: url(../img/offers/2.webp); }
+
+.webp .offers__price_burger{ background: url(../img/offers/white.webp) no-repeat; }
+
+.webp .offers__price_pizza{ background: url(../img/offers/dark.webp) no-repeat; }
 
 .webp .cover-item-blog-pizza{ background: url(../img/blog/01.webp); }
 
