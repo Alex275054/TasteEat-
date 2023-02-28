@@ -646,7 +646,7 @@ h6 {
 }
 
 .menu-section {
-  padding: 50px 0 200px;
+  padding: 3.125rem 0;
   color: #555555;
 }
 
@@ -663,8 +663,8 @@ h6 {
 
 .description-menu-section {
   -webkit-box-flex: 0;
-      -ms-flex: 0 0 30%;
-          flex: 0 0 30%;
+      -ms-flex: 0 1 30%;
+          flex: 0 1 30%;
   margin-bottom: 50px;
 }
 
@@ -688,16 +688,25 @@ h6 {
 }
 
 .description-menu-section__text {
-  font-size: 20px;
-  font-weight: 500;
   margin-bottom: 2.8125rem;
   font-weight: 400;
   font-size: 1.25rem;
   line-height: 30px;
+  padding-right: 0.9375rem;
 }
 
 .description-menu-section__description-img {
-  margin: 0 3.125rem 3.75rem 0;
+  max-width: 24.875rem;
+  text-align: center;
+  margin: 0 auto 3.75rem;
+  text-align: center;
+}
+
+.description-menu-section__img-main {
+  max-width: 100%;
+  text-align: center;
+  margin: 0 auto 3.75rem;
+  text-align: center;
 }
 
 .description-menu-section .description-menu-section__btn {
@@ -715,9 +724,11 @@ h6 {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 15.9375rem;
           flex: 0 1 15.9375rem;
+  max-width: 24.875rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin: 0 auto;
 }
 
 .description-menu-section .description-menu-section__btn:hover {
@@ -725,8 +736,8 @@ h6 {
   background-color: #E1B168;
 }
 
-.list-menu-section__block {
-  padding-left: 0.9375rem;
+.list-menu-section {
+  margin: 0 auto;
 }
 
 .list-menu-section__title {
@@ -737,6 +748,10 @@ h6 {
 
 .list-menu-section__img {
   margin-right: 30px;
+}
+
+.list-menu-section__text {
+  padding-right: 0.9375rem;
 }
 
 .list-menu-section__text-title {
@@ -763,12 +778,18 @@ h6 {
 .list-menu-section .list-menu-section__line {
   position: relative;
   top: 0.9375rem;
+  max-width: 16.375rem;
 }
 
 .testimonial {
   background: #292E36;
   padding: 8.75rem 0rem 7.5rem 0rem;
   color: #fff;
+}
+
+.testimonial__slider {
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
 }
 
 .title-testimonial {
@@ -881,12 +902,8 @@ h6 {
   width: 100%;
 }
 
-.offers {
-  padding: 9.0625rem 0;
-}
-
 .offers__container {
-  padding: 8.75rem 0.9375rem;
+  padding: 6.25rem 0.9375rem 0;
 }
 
 .offers .offers__header {
@@ -906,6 +923,11 @@ h6 {
   -webkit-box-flex: 0;
       -ms-flex: 0 0 17.375rem;
           flex: 0 0 17.375rem;
+}
+
+.offers__slider {
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
 }
 
 .no-webp .offers__burger-slide{
@@ -1017,7 +1039,7 @@ h6 {
 }
 
 .popular {
-  padding: 7.5rem 0rem;
+  padding: 6.25rem 0rem;
 }
 
 .popular__title {
@@ -1032,6 +1054,11 @@ h6 {
 .popular__bottom {
   width: 100%;
   text-align: center;
+}
+
+.popular__slider {
+  -ms-touch-action: pan-y;
+      touch-action: pan-y;
 }
 
 .swiper-container {
@@ -1140,12 +1167,12 @@ h6 {
 
 .blog {
   font-family: "Josefin Sans", sans-serif;
-  padding: 140px 0;
+  padding: 6.25rem 0;
 }
 
-.blog__text {
+.blog__title {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 3.125rem;
 }
 
 .blog__sub-title {
@@ -1158,14 +1185,14 @@ h6 {
   display: inline-block;
 }
 
-.blog__title {
+.blog__title-main {
   font-size: 40px;
   font-family: "Cormorant Infant", serif;
   text-transform: capitalize;
   margin-bottom: 15px;
 }
 
-.blog__main-text {
+.blog__text {
   font-size: 20px;
 }
 
@@ -1397,6 +1424,14 @@ h6 {
   display: none !important;
 }
 
+@media (min-width: 85.625rem) {
+  .description-menu-section__img-main {
+    -webkit-transform: translate(0.5rem);
+        -ms-transform: translate(0.5rem);
+            transform: translate(0.5rem);
+  }
+}
+
 @media (max-width: 1220px) {
   .items-suggestions {
     -ms-flex-wrap: wrap;
@@ -1408,12 +1443,6 @@ h6 {
   .story-about {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
-  }
-
-  .menu-section__container {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
   }
 }
 
@@ -1445,6 +1474,15 @@ h6 {
   .suggestions__container {
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 79.3125rem) {
+  .description-menu-section {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 100%;
+            flex: 0 1 100%;
+    text-align: center;
   }
 }
 
@@ -1671,6 +1709,18 @@ h6 {
 
   .footer__schedule-title {
     margin: 0 auto;
+  }
+}
+
+@media (max-width: 25rem) {
+  .list-menu-section__img {
+    margin-right: 0.9375rem;
+    margin-bottom: 0.9375rem;
+  }
+
+  .list-menu-section .list-menu-section__item {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
 }
 
