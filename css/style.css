@@ -1098,6 +1098,20 @@ h6 {
   line-height: 30px;
 }
 
+.popular__btn {
+  -webkit-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+}
+
+.popular__btn:hover {
+  -webkit-transition: all ease 0.3s;
+  -o-transition: all ease 0.3s;
+  transition: all ease 0.3s;
+  color: #fff;
+  background-color: #E1B168;
+}
+
 .suggestions {
   background-color: #292E36;
   color: #fff;
